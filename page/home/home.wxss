@@ -1,0 +1,9 @@
+/* page/home/home.wxss */
+.title {
+  font-size: 30px;
+  color: #f00;
+}
+button {
+  width: 100px;
+  height: 50px;
+}
