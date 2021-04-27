@@ -1,0 +1,28 @@
+<!--page/input/input.wxml-->
+
+<!-- 1.input的基本使用 -->
+<input />
+
+<!-- 2.value： input的默认值 -->
+<input value="哈哈哈"/>
+
+<!-- 3.type：决定键盘类型(文本输入/数字/身份证) -->
+<input type="number"/>
+
+
+<!-- 4.password: 暗文 -->
+<input password/>
+
+
+<!-- 5.placeholder: 暗文 -->
+<input placeholder="请输入内容"/>
+
+<!-- 6.confirm-type: 设置键盘右下角按钮的文字，仅在type-text时生效 -->
+<input confirm-type="go"/>
+
+
+<!-- 7.input绑定事件 -->
+<input bindinput="handleInput"
+       bindfocus="handleFocus"
+       bindblur="handleBlur"
+/>
