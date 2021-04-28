@@ -1,0 +1,12 @@
+function priceFormat (price, number) {
+  var number = number || 2
+  var p_price = parseFloat(price)
+  return p_price.toFixed(number)
+}
+function dateFormat (timestamp, format) {
+  return '2019-6-15'
+}
+module.exports = {
+  priceFormat: priceFormat,
+  dateFormat: dateFormat
+}

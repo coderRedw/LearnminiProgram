@@ -1,0 +1,98 @@
+<!--page/wxml/wxml.wxml-->
+
+<!-- 2.Mustache -->
+<view>{{ message }}</view>
+<view>{{ fristName }} {{ lastName }}</view>
+<view>{{ firstName + '' + lastName }}</view>
+<view>{{ age > 18 ? "成年人" : "未成年人" }}</view>
+
+<view>{{ nowTime }}</view>
+
+<view class="text {{ isActive ? 'active' : '' }}">哈哈哈</view>
+<button bindtap="handleChageColor">切换颜色</button>
+
+<view>------------ 条件判断 -----------------</view>
+
+<!-- 3.wx:if 的使用 -->
+<button bindtap="handleSwitchShow">切换显示</button>
+<view wx:if="{{ isShow }}">哈哈哈</view>
+
+<button bindtap="handleAddCounter">增加6分</button>
+<view wx:if="{{ score >= 90 }}">优秀</view>
+<view wx:elif="{{ score >= 80 }}">良好</view>
+<view wx:elif="{{ score >= 60 }}">及格</view>
+<view wx:else>不及格</view>
+
+<view>---------------------------------------------</view>
+<!-- 4.hidden 属性-->
+<view hidden="{{ false }}">我是hidden属性控制的内容</view>
+<view wx:if="{{ true }}">我是if语句控制的内容</view>
+
+<!-- wx:if 和 hidden 在隐藏组件有什么区别 -->
+<!-- 
+  区别：
+      hidden: 是将一个组件隐藏起来时，该组件依然存在(display:none)
+      wx:if:  是将一个组件隐藏起来时，该组件根本不存在(压根没有创建)
+  选择：
+    如果显示和隐藏切换的比较频繁非常高，选择使用hidden
+    如果显示和隐藏切换的比较频繁非常低，选择使用wx:if
+ -->
+ <view>---------------------------------------------</view>
+<view hidden="{{ true }}">我是hidden属性控制的内容</view>
+<view wx:if="{{ false }}">我是if语句控制的内容</view>
+
+<view>---------------------------</view>
+<!-- wx:for 回顾 -->
+<!-- 遍历数组/字符串/数字 -->
+
+<!-- <view wx:for="{{ ['acb', 'dwg', 'ega'] }}">{{ item }} - {{ index }}</view>
+<view wx:for="coderRedw">{{ item }} - {{ index }}</view>
+<view wx:for="{{ 5 }}">{{ item  }} - {{ index }}</view> -->
+
+
+<!-- block标签
+      它只接受属性控制，与其他标签有更好的性能
+-->
+<!-- <block wx:for="{{ isShow }}">
+  <button>按钮</button>
+  <view>哈哈哈</view>
+</block>
+
+<!-- item,index 起名字 :一般是用在二层遍历-->
+<!-- <view wx:for="{{ movies }}" wx:for-item="movie" wx:for-index="i">{{ movie }} {{ i }}</view>
+
+<block wx:for="{{ nums }}" wx:for-item="innername">
+  <block wx:for="{{ innername }}">
+    <view>{{ item }}</view>
+  </block>
+</block> --> 
+
+<!-- key的作用 如果数据有唯一标识，用数据的唯一标识，最好不要用index-->
+<!-- <view wx:for="{{ letter }}" wx:key="index">{{ item }}</view> -->
+
+
+<view>--------------- template --------------------------</view>
+<!-- 
+  之前的时候小程序不支持自定义组件，为了进行代码的利用：template
+ -->
+ <!-- 模板中包裹的内容在没有被使用前，是不会进行任何的渲染的 -->
+ <!-- <template name="contentItem">
+    <button size="mini">{{ btnText }}</button>
+    <view>{{ content }}</view>
+ </template> -->
+
+ <!-- 
+    关于wxml的导入有两种方式
+      import导入：
+          1。主要是导入template
+          2。特点：不能进行递归导入
+      include导入：
+          1。将公共的xml中的组件抽到一个文件中
+          2。特点：不能导入template/wxs,可以递归导入
+  -->
+ <import src="/wxml/template.wxml" />
+
+ <template is="contentItem" data="{{ btnText: '按钮', content: '哈哈哈' }}"/>
+ <template is="contentItem" data="{{ btnText: '警告', content: '呵呵呵' }}"/>
+ <template is="contentItem" data="{{ btnText: '点击', content: '嘿嘿嘿' }}"/>
+ <template is="contentItem" data="{{ btnText: '登录', content: '嘻嘻嘻' }}"/>

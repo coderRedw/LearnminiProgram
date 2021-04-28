@@ -1,0 +1,10 @@
+<!--page/rpx/rpx.wxml-->
+<!-- wxss中的单位：rpx -->
+<!-- 前端也需要进行配置尺寸的适配：em/rem/vw/wh -->
+<view class="box">哈哈哈</view>
+
+<view class="box1"></view>
+<view class="box2"></view>
+
+<view class="content1">哈哈哈</view>
+<view class="content2">嗯嗯嗯</view>
